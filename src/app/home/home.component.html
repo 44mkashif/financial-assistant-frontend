@@ -3,6 +3,7 @@
     <div class="col-md-4">
       <div class="container-fluid main-container">
         <app-upload-w2-form (fileUploaded)="handleFileUploaded()"></app-upload-w2-form>
+        <div class="divider"></div>
         <app-files-list [w2Forms]="w2Forms" (selectedW2Form)="selectW2Form($event)"></app-files-list>
       </div>
     </div>

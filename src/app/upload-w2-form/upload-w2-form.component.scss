@@ -1,4 +1,4 @@
-@import '../shared/styles/variables.scss';
+@import "../shared/styles/variables.scss";
 
 .upload-container {
   display: flex;
@@ -62,11 +62,15 @@ p {
   &:hover {
     background-color: darken($accent-color-1, 10%);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-    transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
   }
 
   &:disabled {
     background-color: lighten($accent-color-1, 20%);
+    color: darken($light-neutral, 20%);
     box-shadow: none;
   }
+}
+
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: #1976D2;
 }

@@ -1,6 +1,6 @@
 @import '../shared/styles/variables.scss';
 
-.container {
+.file-list-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,10 +32,6 @@
       .file-name {
         color: white;
       }
-
-      .file-date {
-        color: lighten(white, 20%);
-      }
     }
   }
 }
@@ -43,10 +39,6 @@
 .file-icon {
   min-width: 50px;
   padding: 10px;
-  img {
-    width: 30px;
-    height: auto;
-  }
 }
 
 .file-info {
@@ -57,10 +49,5 @@
     font-weight: bold;
     margin-bottom: 5px;
     color: $primary-color;
-  }
-
-  .file-date {
-    font-size: 0.85rem;
-    color: $medium-neutral;
   }
 }

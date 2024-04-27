@@ -1,14 +1,43 @@
 @import '../shared/styles/variables.scss';
 
+html, body {
+  height: 100%;
+}
+
 .home-container {
   padding: 20px;
+  height: 100vh;
+
+  .row, .col-md-4 {
+    height: 100%;
+  }
 
   .main-container {
-    // height: calc(100vh - 40px);
     background-color: $soft-gray;
-    color: black;
+    color: $dark-neutral;
     padding: 20px 10px;
     border-radius: 20px;
     margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .divider {
+      height: 1.5px;
+      background-color: lighten($medium-neutral, 15%);
+      margin: 20px 0;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .home-container, .row, .col-md-4, .main-container {
+    height: auto;
+    padding: 10px;
+  }
+  .main-container {
+    margin-bottom: 10px;
+    padding: 10px 5px;
   }
 }
