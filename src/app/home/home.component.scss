@@ -1,0 +1,14 @@
+@import '../shared/styles/variables.scss';
+
+.home-container {
+  padding: 20px;
+
+  .main-container {
+    // height: calc(100vh - 40px);
+    background-color: $soft-gray;
+    color: black;
+    padding: 20px 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+}

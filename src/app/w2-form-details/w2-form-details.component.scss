@@ -1,0 +1,40 @@
+@import '../shared/styles/variables.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.w2-details {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+
+  h3 {
+    color: $primary-color; // Using the primary color for headers
+    margin-bottom: 15px;
+  }
+
+  .detail {
+    background-color: $light-neutral; // Soft Gray for detail background
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+    strong {
+      color: $dark-neutral; // Dark color for labels
+      margin-right: 5px;
+    }
+  }
+}
+
+p {
+  color: $medium-neutral; // Using a neutral color for no-data message
+  font-size: 16px;
+}

@@ -1,0 +1,66 @@
+@import '../shared/styles/variables.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.file-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+
+  &.selected {
+    background-color: $primary-color;
+    color: white;
+
+    .file-info {
+      .file-name {
+        color: white;
+      }
+
+      .file-date {
+        color: lighten(white, 20%);
+      }
+    }
+  }
+}
+
+.file-icon {
+  min-width: 50px;
+  padding: 10px;
+  img {
+    width: 30px;
+    height: auto;
+  }
+}
+
+.file-info {
+  flex-grow: 1;
+  padding: 10px;
+
+  .file-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: $primary-color;
+  }
+
+  .file-date {
+    font-size: 0.85rem;
+    color: $medium-neutral;
+  }
+}

@@ -1,0 +1,18 @@
+<div class="upload-container">
+  <div
+    class="drop-zone"
+    (click)="fileInput.click()"
+    (drop)="onDrop($event)"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+  >
+    <input type="file" #fileInput (change)="onFileSelected($event)" hidden />
+    <p *ngIf="!selectedFile">
+      Drag and drop files here or click to select files
+    </p>
+    <p *ngIf="selectedFile">
+      File ready for upload: <br><strong>{{ selectedFile.name }}</strong>
+    </p>
+  </div>
+  <button class="upload-btn" (click)="onSubmit()">Upload File</button>
+</div>

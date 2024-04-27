@@ -1,0 +1,15 @@
+<div class="container">
+  <div
+    *ngFor="let w2Form of w2Forms; let i = index"
+    class="file-card"
+    (click)="onSelectW2Form(i)"
+    [ngClass]="{'selected': selectedIndex === i}"
+  >
+    <div class="file-icon">
+      <mat-icon>insert_drive_file</mat-icon>
+    </div>
+    <div class="file-info">
+      <p class="file-name">{{ w2Form.file_name }}</p>
+    </div>
+  </div>
+</div>
