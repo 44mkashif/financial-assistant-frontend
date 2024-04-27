@@ -1,6 +1,6 @@
 <div class="upload-container">
   <div
-    class="drop-zone"
+    class="drop-zone" [class.loading]="isLoading"
     (click)="fileInput.click()"
     (drop)="onDrop($event)"
     (dragover)="onDragOver($event)"
@@ -13,6 +13,11 @@
     <p *ngIf="selectedFile">
       File ready for upload: <br><strong>{{ selectedFile.name }}</strong>
     </p>
+    <div *ngIf="isLoading" class="spinner-container">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
   </div>
-  <button class="upload-btn" (click)="onSubmit()">Upload File</button>
+  <button class="upload-btn" (click)="onSubmit()" [disabled]="isLoading">
+    Upload File
+  </button>
 </div>

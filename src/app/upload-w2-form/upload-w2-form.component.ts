@@ -9,6 +9,7 @@ import { FileService } from '../services/file.service';
   styleUrl: './upload-w2-form.component.scss',
 })
 export class UploadW2FormComponent {
+  isLoading = false;
   selectedFile: File | null = null;
   @Output() fileUploaded = new EventEmitter();
 
@@ -32,12 +33,16 @@ export class UploadW2FormComponent {
       return;
     }
     if (this.selectedFile) {
+      this.isLoading = true;
       this.fileService.uploadFile(this.selectedFile).subscribe(
         (response) => {
           this.toastr.success('File uploaded successfully!', 'Success');
           this.fileUploaded.emit();
+          this.isLoading = false;
+          this.selectedFile = null;
         },
         (error) => {
+          this.isLoading = false;
           this.toastr.error('Error uploading file. Please try again.', 'Error');
         }
       );
