@@ -14,6 +14,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FilesListComponent } from './files-list/files-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,16 @@ import { MatIconModule } from '@angular/material/icon';
     W2FormDetailsComponent,
     FilesListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, MatIconModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    MatIconModule,
+    ToastrModule.forRoot({
+      timeOut: 3500,
+      preventDuplicates: true,
+    }),
+  ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
