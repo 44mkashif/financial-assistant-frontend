@@ -9,13 +9,16 @@ import { W2FormListResponse } from '../shared/interfaces/w2-form.interface';
   providedIn: 'root'
 })
 export class FileService {
-  private listUrl = 'your-backend-endpoint/w2-forms/list';
 
   constructor(private http: HttpClient) { }
 
   uploadFile(file: File): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
+    const userId = localStorage.getItem('userId');
+    if(userId) {
+      formData.append('user_id', userId);
+    }
     return this.http.post(`${environment.baseUrl}/w2-form/upload`, formData);
   }
 

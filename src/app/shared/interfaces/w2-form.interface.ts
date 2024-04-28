@@ -15,6 +15,9 @@ export interface W2Form {
   state_income_tax: number;
   state_wages_and_tips: number;
   uploaded_on: string;
+  gpt_assistant_id: string;
+  gpt_thread_id: string;
+  w2_form_id: number;
 }
 
 export interface W2FormListResponse {

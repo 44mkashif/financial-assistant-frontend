@@ -7,5 +7,5 @@ import { W2Form } from '../shared/interfaces/w2-form.interface';
   styleUrl: './w2-form-details.component.scss'
 })
 export class W2FormDetailsComponent {
-  @Input() w2Form: W2Form | null = null;
+  @Input() w2Form?: W2Form;
 }

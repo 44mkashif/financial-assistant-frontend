@@ -1,3 +1,28 @@
-<div class="container">
-  <p>chat works!</p>
+<div class="chat-container">
+  <div *ngIf="isLoading" class="spinner-container">
+    <mat-spinner class="primary-spinner" diameter="50"></mat-spinner>
+  </div>
+  <div *ngIf="w2Form && !isLoading" class="chat-content">
+    <div class="chat-messages" #scrollBottom>
+      <div *ngFor="let message of messages" class="message" [ngClass]="{'user-message': message.role === 'user', 'system-message': message.role === 'system'}">
+        <div class="message-content">
+          {{ message.message }}
+        </div>
+        <div *ngIf="message.created_at" class="message-time">
+          {{ message.created_at | date: 'short' }}
+        </div>
+      </div>
+      <div *ngIf="isTyping" class="typing-indicator">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+    <div class="message-input">
+      <input [(ngModel)]="message" placeholder="Type a message..." (keyup.enter)="sendMessage()" class="input-field">
+      <button (click)="sendMessage()" class="send-button">
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>

@@ -4,6 +4,7 @@ import {
   BrowserModule,
   provideClientHydration,
 } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -21,10 +22,10 @@ import { W2FormDetailsComponent } from './w2-form-details/w2-form-details.compon
   declarations: [
     AppComponent,
     HomeComponent,
-    ChatComponent,
     UploadW2FormComponent,
     W2FormDetailsComponent,
     FilesListComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +37,7 @@ import { W2FormDetailsComponent } from './w2-form-details/w2-form-details.compon
       preventDuplicates: true,
     }),
     MatProgressSpinnerModule,
+    FormsModule
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],

@@ -2,19 +2,32 @@
   <div class="row">
     <div class="col-md-4">
       <div class="container-fluid main-container">
-        <app-upload-w2-form (fileUploaded)="handleFileUploaded()"></app-upload-w2-form>
+        <app-upload-w2-form
+          (fileUploaded)="fetchW2Forms()"
+        ></app-upload-w2-form>
         <div class="divider"></div>
-        <app-files-list [w2Forms]="w2Forms" (selectedW2Form)="selectW2Form($event)"></app-files-list>
+        <app-files-list
+          [w2Forms]="w2Forms"
+          (selectedW2Form)="selectW2Form($event)"
+        ></app-files-list>
       </div>
     </div>
     <div class="col-md-4">
       <div class="container-fluid main-container">
-        <app-w2-form-details [w2Form]="w2Forms[selectedIndex]"></app-w2-form-details>
+        <app-w2-form-details
+          *ngIf="w2Forms.length"
+          [w2Form]="w2Forms[selectedIndex]"
+        ></app-w2-form-details>
+        <p class="no-data" *ngIf="!w2Forms.length">No W-2 Form selected</p>
       </div>
     </div>
     <div class="col-md-4">
       <div class="container-fluid main-container">
-        <app-chat></app-chat>
+        <app-chat
+          *ngIf="w2Forms.length"
+          [w2Form]="w2Forms[selectedIndex]"
+        ></app-chat>
+        <p class="no-data" *ngIf="!w2Forms.length">No W-2 Form selected</p>
       </div>
     </div>
   </div>

@@ -1,43 +1,43 @@
 <div class="details-container">
-  <div *ngIf="w2Form; else noDataTemplate" class="w2-details">
-    <h3>W-2 Form Details</h3>
-    <div class="detail">
-      <strong>Employee Name:</strong> {{ w2Form.employee_name }}
+  <div *ngIf="w2Form" class="w2-details">
+    <h2>W-2 Form Details</h2>
+    <div class="group">
+      <h4>Employee Details</h4>
+      <div class="detail">
+        <strong>Employee Name:</strong> {{ w2Form.employee_name }}
+      </div>
+      <div class="detail">
+        <strong>Employee SSN:</strong> {{ w2Form.employee_ssn }}
+      </div>
+      <div class="detail">
+        <strong>Employee Address:</strong> {{ w2Form.employee_address }}
+      </div>
     </div>
-    <div class="detail">
-      <strong>Employee SSN:</strong> {{ w2Form.employee_ssn }}
+    <div class="divider"></div>
+    <div class="group">
+      <h4>Employer Details</h4>
+      <div class="detail">
+        <strong>Employer Name:</strong> {{ w2Form.employer_name }}
+      </div>
+      <div class="detail">
+        <strong>Employer EIN:</strong> {{ w2Form.employer_ein }}
+      </div>
+      <div class="detail">
+        <strong>Employer Address:</strong> {{ w2Form.employer_address }}
+      </div>
     </div>
-    <div class="detail">
-      <strong>Employee Address:</strong> {{ w2Form.employee_address }}
-    </div>
-    <div class="detail">
-      <strong>Employer Name:</strong> {{ w2Form.employer_name }}
-    </div>
-    <div class="detail">
-      <strong>Employer EIN:</strong> {{ w2Form.employer_ein }}
-    </div>
-    <div class="detail">
-      <strong>Employer Address:</strong> {{ w2Form.employer_address }}
-    </div>
-    <div class="detail">
-      <strong>Social Security Wages:</strong>
-      {{ w2Form.social_security_wages | number }}
-    </div>
-    <div class="detail">
-      <strong>Medicare Wages:</strong> {{ w2Form.medicare_wages | number }}
-    </div>
-    <div class="detail">
-      <strong>Federal Income Tax:</strong>
-      {{ w2Form.federal_income_tax | number }}
-    </div>
-    <div class="detail">
-      <strong>Uploaded On:</strong>
-      {{ w2Form.uploaded_on | date : "fullDate" }} at
-      {{ w2Form.uploaded_on | date : "shortTime" }}
+    <div class="divider"></div>
+    <div class="group">
+      <h4>Tax Information</h4>
+      <div class="detail">
+        <strong>Social Security Wages:</strong> {{ w2Form.social_security_wages | number }}
+      </div>
+      <div class="detail">
+        <strong>Medicare Wages:</strong> {{ w2Form.medicare_wages | number }}
+      </div>
+      <div class="detail">
+        <strong>Federal Income Tax:</strong> {{ w2Form.federal_income_tax | number }}
+      </div>
     </div>
   </div>
-
-  <ng-template #noDataTemplate>
-    <p>No W-2 Form selected</p>
-  </ng-template>
 </div>
