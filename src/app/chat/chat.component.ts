@@ -1,9 +1,9 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ChatService } from '../services/chat.service';
 import {
-  AskQuestionApiResponse,
-  ChatMessage,
-  GetMessagesApiResponse,
+  IAskQuestionApiResponse,
+  IChatMessage,
+  IGetMessagesApiResponse,
 } from '../shared/interfaces/chat.interface';
 import { W2Form } from '../shared/interfaces/w2-form.interface';
 
@@ -16,11 +16,11 @@ export class ChatComponent implements OnInit, OnChanges {
   message: string = '';
   isLoading: boolean = false;
   isTyping: boolean = false;
-  messages: ChatMessage[] = [];
+  messages: IChatMessage[] = [];
   @Input() w2Form?: W2Form;
 	@ViewChild('scrollBottom') private myScrollContainer!: ElementRef;
   
-  initialMessage: ChatMessage = {
+  initialMessage: IChatMessage = {
     role: 'system',
     message: 'Hello! I’m here to help you. Feel free to ask any questions you might have.'
   };
@@ -51,7 +51,7 @@ export class ChatComponent implements OnInit, OnChanges {
       this.chatService
         .askQuestion(this.message, this.w2Form)
         .subscribe(
-          (response: AskQuestionApiResponse) => {
+          (response: IAskQuestionApiResponse) => {
             this.isTyping = false;
             this.messages.push({
               role: 'system',
@@ -81,7 +81,7 @@ export class ChatComponent implements OnInit, OnChanges {
       this.isLoading = true;
       this.chatService
         .getMessages(this.w2Form.gpt_thread_id)
-        .subscribe((response: GetMessagesApiResponse) => {
+        .subscribe((response: IGetMessagesApiResponse) => {
           this.messages = [this.initialMessage, ...response.data];
           this.isLoading = false;
           this.scrollToBottom();

@@ -1,15 +1,15 @@
-export interface ChatMessage {
+export interface IChatMessage {
   role: string;
   message: string;
   created_at?: string;
 }
 
-export interface GetMessagesApiResponse {
-  data: ChatMessage[],
+export interface IGetMessagesApiResponse {
+  data: IChatMessage[],
   message: string
 }
 
-export interface AskQuestionApiResponse {
-  data: ChatMessage;
+export interface IAskQuestionApiResponse {
+  data: IChatMessage;
   message: string;
 }

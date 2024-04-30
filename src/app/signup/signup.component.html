@@ -1,0 +1,49 @@
+<div class="signup-container">
+  <div class="image-column"></div>
+  <div class="form-column">
+    <form class="signup-form" [formGroup]="signupForm" (ngSubmit)="onSignup()">
+      <h1 class="form-heading">Sign Up</h1>
+
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name" placeholder="Enter your name"
+               [ngClass]="{'input-error': signupForm.get('name')?.touched && signupForm.get('name')?.errors}">
+        <p class="error" *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.errors">
+          {{ getErrorMessage('name') }}
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email" placeholder="Enter your email"
+               [ngClass]="{'input-error': signupForm.get('email')?.touched && signupForm.get('email')?.errors}">
+        <p class="error" *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.errors">
+          {{ getErrorMessage('email') }}
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password" placeholder="Enter your password"
+               [ngClass]="{'input-error': signupForm.get('password')?.touched && signupForm.get('password')?.errors}">
+        <p class="error" *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.errors">
+          {{ getErrorMessage('password') }}
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm your password"
+               [ngClass]="{'input-error': signupForm.get('confirmPassword')?.touched && signupForm.get('confirmPassword')?.errors}">
+        <p class="error" *ngIf="signupForm.get('confirmPassword')?.touched && signupForm.get('confirmPassword')?.errors">
+          {{ getErrorMessage('confirmPassword') }}
+        </p>
+      </div>
+
+      <div class="buttons">
+        <button type="submit" class="signup-btn">Sign Up</button>
+        <button type="button" class="login-btn" (click)="goToLogin()">Already have an account? Log In</button>
+      </div>
+    </form>
+  </div>
+</div>

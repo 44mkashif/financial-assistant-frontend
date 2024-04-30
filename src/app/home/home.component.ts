@@ -4,6 +4,8 @@ import {
   W2Form,
   W2FormListResponse,
 } from '../shared/interfaces/w2-form.interface';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,27 +13,27 @@ import {
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  userId?: number;
   w2Forms: W2Form[] = [];
-  userId: number = 1; //TODO: After implementing auth, fix this
   selectedIndex: number = 0;
 
   constructor(
+    private router: Router,
+    private cdr: ChangeDetectorRef,
     private fileService: FileService,
-    private cdr: ChangeDetectorRef
+    private authService: AuthService,
   ) {}
 
   ngOnInit() {
-    //TODO: After implementing auth, fix this
     const userId = localStorage.getItem('userId');
-    if (userId) {
+    if(userId) {
       this.userId = +userId;
     }
-    localStorage.setItem('userId', this.userId.toString());
     this.fetchW2Forms();
   }
 
   fetchW2Forms() {
-    this.fileService.getFilesList(this.userId).subscribe(
+    this.fileService.getFilesList(this.userId!).subscribe(
       (response: W2FormListResponse) => {
         if (response.data.length) {
           this.w2Forms = response.data;
@@ -47,5 +49,16 @@ export class HomeComponent {
   selectW2Form(index: number) {
     this.selectedIndex = index;
     this.cdr.detectChanges();
+  }
+
+  onLogout() {
+    this.authService.logout().subscribe(
+      (response) => {
+        this.router.navigate(['/login']);
+      },
+      (error) => {
+        console.error('Error', error);
+      }
+    );
   }
 }

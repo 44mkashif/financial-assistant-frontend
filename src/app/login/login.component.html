@@ -1,0 +1,31 @@
+<div class="login-container">
+  <div class="image-column"></div>
+  <div class="form-column">
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <h1 class="form-heading">Log In</h1>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email" placeholder="Enter your email"
+               [ngClass]="{'input-error': loginForm.get('email')?.touched && loginForm.get('email')?.errors}">
+        <p class="error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors">
+          {{ getErrorMessage('email') }}
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password" placeholder="Enter your password"
+               [ngClass]="{'input-error': loginForm.get('password')?.touched && loginForm.get('password')?.errors}">
+        <p class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors">
+          {{ getErrorMessage('password') }}
+        </p>
+      </div>
+
+      <div class="buttons">
+        <button type="submit" class="login-btn">Log In</button>
+        <button type="button" class="signup-btn" (click)="goToSignup()">Don't have an account? Sign Up</button>
+      </div>
+    </form>
+  </div>
+</div>

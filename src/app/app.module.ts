@@ -4,7 +4,7 @@ import {
   BrowserModule,
   provideClientHydration,
 } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FilesListComponent } from './files-list/files-list.component';
 import { UploadW2FormComponent } from './upload-w2-form/upload-w2-form.component';
 import { W2FormDetailsComponent } from './w2-form-details/w2-form-details.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { W2FormDetailsComponent } from './w2-form-details/w2-form-details.compon
     W2FormDetailsComponent,
     FilesListComponent,
     ChatComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import { W2FormDetailsComponent } from './w2-form-details/w2-form-details.compon
       preventDuplicates: true,
     }),
     MatProgressSpinnerModule,
-    FormsModule
+    FormsModule,
+		ReactiveFormsModule
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],

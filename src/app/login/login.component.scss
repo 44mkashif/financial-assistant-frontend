@@ -1,0 +1,122 @@
+@import '../shared/styles/variables.scss';
+
+.login-container {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: $soft-gray;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+
+  .image-column, .form-column {
+    flex-basis: 50%;
+  }
+
+  .image-column {
+    background: url('../../assets/background.jpg') no-repeat left center;
+    background-size: cover;
+  }
+
+  .form-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .login-form {
+    width: 100%;
+    max-width: 360px;
+
+    .form-heading {
+      text-align: center;
+      color: $primary-color;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: $dark-neutral;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid $medium-neutral;
+        border-radius: 50px;
+        background-color: $light-neutral;
+      }
+
+      .input-error {
+        border: 2px solid $error;
+      }
+
+      .error {
+        color: $error;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      button {
+        width: 100%;
+        border: none;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 50px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      .login-btn {
+        background-color: $primary-color;
+        color: white;
+
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
+      }
+
+      .signup-btn {
+        background-color: $accent-color-1;
+        color: white;
+
+        &:hover {
+          background-color: darken($accent-color-1, 10%);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    max-height: none;
+    justify-content: center;
+
+    .image-column {
+      display: none;
+    }
+
+    .form-column {
+      width: 100%;
+      padding: 20px;
+    }
+  }
+}
