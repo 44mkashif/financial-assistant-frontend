@@ -22,6 +22,10 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if(this.authService.isLoggedIn()) {
+      this.router.navigate(['/home']);
+    }
+
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
@@ -33,7 +37,6 @@ export class LoginComponent implements OnInit {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe({
         next: (response: ILoginApiResponse) => {
-          localStorage.setItem('userId', response.data.user_id.toString());
           localStorage.setItem('accessToken', response.data.access_token);
           this.toastr.success('Logged in successfully', 'Success');
           this.router.navigate(['/home']);

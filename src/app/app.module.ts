@@ -6,7 +6,7 @@ import {
 } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -19,6 +19,7 @@ import { UploadW2FormComponent } from './upload-w2-form/upload-w2-form.component
 import { W2FormDetailsComponent } from './w2-form-details/w2-form-details.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { SignupComponent } from './signup/signup.component';
     FilesListComponent,
     ChatComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,9 +43,17 @@ import { SignupComponent } from './signup/signup.component';
     }),
     MatProgressSpinnerModule,
     FormsModule,
-		ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [provideClientHydration(), provideAnimationsAsync()],
+  providers: [
+    provideClientHydration(),
+    provideAnimationsAsync(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

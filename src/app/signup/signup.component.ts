@@ -30,6 +30,10 @@ export class SignupComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if(this.authService.isLoggedIn()) {
+      this.router.navigate(['/home']);
+    }
+
     this.signupForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -43,7 +47,6 @@ export class SignupComponent implements OnInit {
       const { name, email, password } = this.signupForm.value;
       this.authService.signup({ name, email, password }).subscribe({
         next: (response: ISignUpApiResponse) => {
-          localStorage.setItem('userId', response.data.user_id.toString());
           localStorage.setItem('accessToken', response.data.access_token);
           this.toastr.success('Account created successfully', 'Success');
           this.router.navigate(['/home']);

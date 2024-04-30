@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  userId?: number;
   w2Forms: W2Form[] = [];
   selectedIndex: number = 0;
 
@@ -25,15 +24,11 @@ export class HomeComponent {
   ) {}
 
   ngOnInit() {
-    const userId = localStorage.getItem('userId');
-    if(userId) {
-      this.userId = +userId;
-    }
     this.fetchW2Forms();
   }
 
   fetchW2Forms() {
-    this.fileService.getFilesList(this.userId!).subscribe(
+    this.fileService.getFilesList().subscribe(
       (response: W2FormListResponse) => {
         if (response.data.length) {
           this.w2Forms = response.data;
@@ -54,6 +49,7 @@ export class HomeComponent {
   onLogout() {
     this.authService.logout().subscribe(
       (response) => {
+        localStorage.removeItem('accessToken');
         this.router.navigate(['/login']);
       },
       (error) => {

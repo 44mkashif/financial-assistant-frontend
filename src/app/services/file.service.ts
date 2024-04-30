@@ -21,7 +21,7 @@ export class FileService {
     return this.http.post(`${environment.baseUrl}/w2-form/upload`, formData, { headers });
   }
 
-  getFilesList(userId: number): Observable<W2FormListResponse> {
+  getFilesList(): Observable<W2FormListResponse> {
     const headers = new HttpHeaders().set(
       'Authorization',
       `Bearer ` + localStorage.getItem('accessToken')
